@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<widget id="com.adnerp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>ADN</name>
+  <description>
+        Versión movil del software contable ADN.
+    </description>
+  <author email="you@example.com" href="http://example.com.com/">
+      ADN ADMINISTRADOR DE NEGEOCIOS
+    </author>
+  <content src="index.html"/>
+  <access origin="*"/>
+  <access origin="content:///*"/>
+  <preference name="orientation" value="portrait"/>
+  <preference name="webviewbounce" value="false"/>
+  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="DisallowOverscroll" value="true"/>
+  <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="FadeSplashScreenDuration" value="2000"/>
+  <preference name="android-minSdkVersion" value="17"/>
+  <preference name="BackupWebStorage" value="none"/>
+  <preference name="SplashScreen" value="screen"/>
+  <feature name="StatusBar">
+    <param name="ios-package" onload="true" value="CDVStatusBar"/>
+  </feature>
+  <plugin name="cordova-plugin-device" spec="~1.1.2"/>
+  <plugin name="cordova-plugin-console" spec="~1.0.3"/>
+  <plugin name="cordova-plugin-whitelist" spec="~1.2.2"/>
+  <plugin name="cordova-plugin-splashscreen" spec="~3.2.2"/>
+  <plugin name="cordova-plugin-statusbar" spec="~2.1.3"/>
+  <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
+  <platform name="android">
+    <icon src="resources/android/icon/adnHuella-nube-ldpi-icon.png" density="ldpi"/>
+    <icon src="resources/android/icon/adnHuella-nube-mdpi-icon.png" density="mdpi"/>
+    <icon src="resources/android/icon/adnHuella-nube-hdpi-icon.png" density="hdpi"/>
+    <icon src="resources/android/icon/adnHuella-nube-xhdpi-icon.png" density="xhdpi"/>
+    <icon src="resources/android/icon/adnHuella-nube-xxhdpi-icon.png" density="xxhdpi"/>
+    <icon src="resources/android/icon/adnHuella-nube-xxxhdpi-icon.png" density="xxxhdpi"/>
+    <!--<splash src="resources/android/splash/adn-land-ldpi-screen.png" density="land-ldpi"/>
+    <splash src="resources/android/splash/adn-land-mdpi-screen.png" density="land-mdpi"/>
+    <splash src="resources/android/splash/adn-land-hdpi-screen.png" density="land-hdpi"/>
+    <splash src="resources/android/splash/adn-land-xhdpi-screen.png" density="land-xhdpi"/>
+    <splash src="resources/android/splash/adn-land-xxhdpi-screen.png" density="land-xxhdpi"/>
+    <splash src="resources/android/splash/adn-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>-->
+    <splash src="resources/android/splash/adnHuella-port-ldpi-screen.png" density="port-ldpi"/>
+    <splash src="resources/android/splash/adnHuella-port-mdpi-screen.png" density="port-mdpi"/>
+    <splash src="resources/android/splash/adnHuella-port-hdpi-screen.png" density="port-hdpi"/>
+    <splash src="resources/android/splash/adnHuella-port-xhdpi-screen.png" density="port-xhdpi"/>
+    <splash src="resources/android/splash/adnHuella-port-xxhdpi-screen.png" density="port-xxhdpi"/>
+    <splash src="resources/android/splash/adnHuella-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
+  </platform>
+  <platform name="ios">
+    <icon src="resources/ios/icon/iconHuella.png" width="57" height="57"/>
+    <icon src="resources/ios/icon/iconHuella@2x.png" width="114" height="114"/>
+    <icon src="resources/ios/icon/iconHuella-40.png" width="40" height="40"/>
+    <icon src="resources/ios/icon/iconHuella-40@2x.png" width="80" height="80"/>
+    <icon src="resources/ios/icon/iconHuella-40@3x.png" width="120" height="120"/>
+    <icon src="resources/ios/icon/iconHuella-50.png" width="50" height="50"/>
+    <icon src="resources/ios/icon/iconHuella-50@2x.png" width="100" height="100"/>
+    <icon src="resources/ios/icon/iconHuella-60.png" width="60" height="60"/>
+    <icon src="resources/ios/icon/iconHuella-60@2x.png" width="120" height="120"/>
+    <icon src="resources/ios/icon/iconHuella-60@3x.png" width="180" height="180"/>
+    <icon src="resources/ios/icon/iconHuella-72.png" width="72" height="72"/>
+    <icon src="resources/ios/icon/iconHuella-72@2x.png" width="144" height="144"/>
+    <icon src="resources/ios/icon/iconHuella-76.png" width="76" height="76"/>
+    <icon src="resources/ios/icon/iconHuella-76@2x.png" width="152" height="152"/>
+    <icon src="resources/ios/icon/iconHuella-83.5@2x.png" width="167" height="167"/>
+    <icon src="resources/ios/icon/icon-small-Huella.png" width="29" height="29"/>
+    <icon src="resources/ios/icon/icon-small-Huella@2x.png" width="58" height="58"/>
+    <icon src="resources/ios/icon/icon-small-Huella@3x.png" width="87" height="87"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella-568h@2x~iphone.png" height="1136" width="640"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella-667h.png" height="1334" width="750"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella-736h.png" height="2208" width="1242"/>
+    <!--<splash src="resources/ios/splash/DefaultAdn-Landscape-736h.png" height="1242" width="2208"/>
+    <splash src="resources/ios/splash/DefaultAdn-Landscape@2x~ipad.png" height="1536" width="2048"/>
+    <splash src="resources/ios/splash/DefaultAdn-Landscape@~ipadpro.png" height="2048" width="2732"/>
+    <splash src="resources/ios/splash/DefaultAdn-Landscape~ipad.png" height="768" width="1024"/>-->
+    <splash src="resources/ios/splash/DefaultAdnHuella-Portrait@2x~ipad.png" height="2048" width="1536"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella-Portrait@~ipadpro.png" height="2732" width="2048"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella-Portrait~ipad.png" height="1024" width="768"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella@2x~iphone.png" height="960" width="640"/>
+    <splash src="resources/ios/splash/DefaultAdnHuella~iphone.png" height="480" width="320"/>
+  </platform>
+</widget>
