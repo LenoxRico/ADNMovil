@@ -1,0 +1,151 @@
+/* Empty. Add your own CSS if you like */
+.marcaAgua{max-width:100%;height: auto;width: auto\9; /* ie8  */ padding: 50px 50px;}
+.rectangulo{max-width:100%;height: auto;width: auto\9;}
+.textCuadro{margin: -110px 15px 15px 15px;width: 100%;}
+.cuadro{display: block;position: absolute;float: left;width: 100%;}
+
+.nubeMarcaFondo{
+	content: url(../img/portraitFondo.png);
+	max-width:100%;min-height: 100%;
+	
+}
+.fondos{width: 100%;height: 100%;}
+.input-label-Fact {
+  display: table;
+  padding: 7px 10px 7px 0px;
+  max-width: 200px;
+  width: 100%;
+  text-align: right;
+    color: #045FB4;
+  font-size: 18px; }
+table {
+    height: 100%;  
+}
+
+table thead {
+    display: block;
+}
+
+table tbody {
+/*    height: 88%;*/
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.theroot {
+  height: 85%;
+  margin: 0px 0px 0px 0px;
+  display: block;
+}
+
+.custom-class .popup-head {
+  display: none;
+}
+
+.popup-head,.popup-body{
+	background-color: rgba(0, 0, 6, 0.9);
+	color: white;
+}
+.popup-title{
+	color: white;
+}
+
+.item-content.activated{
+background-color: rgba(0, 50, 144, 0.5) !important;
+}
+.docText{
+	width: 5px;
+}
+.bg-red,input[type="number"]:disabled,input[type="text"]:disabled {
+    background: #848484;
+}
+.popDocs
+{
+	text-align: right;
+}
+
+.botonEntrada{
+  background-color: rgb(000,092,169);
+  color: white;
+}
+.textoEntrada{
+  color: rgb(000,092,169);
+  font-size: 15px;
+}
+
+.botonSalida{
+  background-color: rgb(219,008,018);
+  color: white;
+}
+
+.nuevaTarea {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ width:95%;
+ height:95%;
+ border: 1px solid #454545;
+ font-size: large;
+ text-align: justify;
+}
+.consultaGeneralScroll{
+  height: 88%;
+  margin: 0px 0px 0px 0px;
+  display: block;
+}
+.detallesScroll{
+  height: 95%;
+  margin: 0px 0px 0px 0px;
+  display: block;
+}
+.detallesMercadeo{
+  height: 90%;
+  margin: 45px 0px 0px 0px;
+  display: block;
+}
+.detalleArticulo{
+  height: auto;
+  margin: 0px 0px 0px 0px;
+  display: block;
+}
+.icon_mayor{
+	position: relative;
+	float: right;
+	margin: -50px 0px 0px 0px;
+}
+@media (orientation: landscape) { 
+	.cuadro{
+	display: block;
+	position: absolute;
+	height: 60%;
+	width: 60%;
+}
+.logoAdn{
+	content: url(../img/newLogo.png);
+	height: 50%;
+	width: 50%;
+}
+.nubeMarca{
+	content: url(../img/landspaceFondo.png);
+	max-width:100%;
+	min-height: 100%;
+}
+
+ }
+@media (orientation: portrait) {
+.logoAdn{
+	margin: -100% 15px 50% 15px;
+	content: url(../img/newLogo.png);
+	height: 20%;
+	width: 40%;
+}
+}
+
+@media (max-width: 680px) {
+    .modal-backdrop {
+    opacity: 1 !important;
+    transition: opacity 300ms ease-in-out;
+    background-color: transparent !important;
+    }
+}
