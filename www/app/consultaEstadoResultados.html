@@ -1,0 +1,27 @@
+<div data-ng-controller="controllerEstadoResultados">
+<ion-view title="Estado De Resultados"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+  <div class="item item-input-inset" style="margin: 0px 0px 0px 0px;">
+  <button class="button botonEntrada button-small " on-touch="popFecha1(textBusqueda)"> {{selected}}</button>
+      <input type="text" placeholder="Nom/Cod Tipo Documento" data-ng-model="textBusqueda" style="width: 60%;margin: 0px 0px 0px 10px;color: black">
+    <button class="button botonEntrada button-small" on-touch="popFecha1(textBusqueda)" style="margin: 0px 0px 0px 10px;">
+    <i class="icon ion-ios-search-strong"></i></button>
+  </div>
+    <ion-scroll direction="y" class="consultaGeneralScroll">
+      <div data-ng-repeat="codigo in ArrayEstadoResul.slice(0,-1)" data-ng-click="cuentaSeleccionado(codigo[0],codigo[1],codigo[2])" style="border-bottom:1px solid black;" >
+                <div class="button-bar" style="margin-top: -6px;">
+                    <button style="text-align:left;" class="button button-dark button-block button-small">Cod: {{codigo[0]}}</button>
+                    <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[2] | currency:"$":0}}</button>
+                </div>
+                    <p style="font-size: 12px;margin-top: -10px;">{{codigo[1] }}
+                        <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                    </p>
+            </div>
+    </ion-scroll>
+        </ion-content>
+</ion-view>
+
+<ion-footer-bar align-title="right" class="bar-dark">
+  <h1 class="title">Utilidad: {{sum*-1 | currency:"$":0}}</h1>
+</ion-footer-bar>
+</div>

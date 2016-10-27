@@ -1,0 +1,22 @@
+<div data-ng-controller="controllerDetalleMercadeo">
+<ion-view title="Detalle C.R.M"  left-buttons="leftButtons">
+        <ion-content cass="padding" scroll="false">
+<ion-header-bar align-title="left" class="bar-dark">
+  <h1 class="title">{{nomMercadeo}}</h1>
+  <div class="buttons">
+    <button class="button" data-ng-click="agregarTarea()" style="background-color: rgb(000,092,169);"><i class="ion-android-add"></i> Nueva Tarea</button>
+  </div>
+</ion-header-bar>
+<br>
+<ion-scroll direction="y" class="detallesMercadeo">
+  <div data-ng-repeat="codigos in detMercadeo" style="border-bottom:1px solid black;">
+      <div class="button-bar" style="margin-top: -6px;">
+          <button style="left:-1px;text-align:center;" class="button button-dark button-block button-small">{{codigos.fch}}</button>
+      </div>
+        <p style="margin: 0px 5px 0px 5px;">{{codigos.tar}}
+        </p>
+  </div>
+</ion-scroll>
+        </ion-content>
+</ion-view>
+</div>

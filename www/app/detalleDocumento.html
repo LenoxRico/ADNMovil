@@ -1,0 +1,34 @@
+<div data-ng-controller="controllerDetalleDocumento">
+<ion-view title="Detalle"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+    <div class="row padding textoEntrada">
+      <div class="col col-60"><b>{{nomCliente}}</b></div>
+      <div class="col col-40"><b>{{nomDocumento}}</b></div>
+    </div>
+<ion-scroll direction="y" class="theroot" style="height:95%;">
+  <div data-ng-repeat="codigos in ArrayDetalleDocumento.slice(0, -1)" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <button ng-if="codigos[0] !== ' ' && codigos[0] !== 'Vendedor'" style="left:-1px;text-align:left;" class="button button-dark button-full button-small">{{codigos[0]}}</button>
+                <button ng-if="codigos[0] == 'Vendedor' && codigos[2] !== ''" style="left:-1px;text-align:left;" class="button button-dark button-full button-small">{{codigos[0]}}</button>
+                <button ng-if="codigos[2] == ' ' || codigos[2] == ''" style="text-align:right;background-color: white;" class="button button-block button-small">
+                </button>
+                <button ng-if="codigos[2] !== ' ' && codigos[2] !== ''" style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">
+                <div ng-if="codigos[2] < 0" class="assertive">
+                  {{codigos[2] | currency:"$":0}} </div>
+                 <div ng-if="codigos[2] >= 0 && codigos[0] !== 'Vendedor'">
+                  {{codigos[2] | currency:"$":0}} </div>
+                   <div ng-if="codigos[0] == 'Vendedor'">
+                  {{codigos[2]}} </div>  
+                </button>
+            </div>
+                <p ng-if="codigos[1] !== 'CONTABILIDAD' && codigos[1] !== 'DETALLES' " style="font-size: 12px;margin-top: -10px;">{{codigos[1]}}
+                </p>
+                <p ng-if="codigos[1] == 'CONTABILIDAD' || codigos[1] == 'DETALLES'" class="textoEntrada" style="margin-top: -10px; text-align: center;"><b>{{codigos[1]}}</b>
+                </p>
+       </div>
+</ion-scroll>
+        </div>
+        </ion-content>
+</ion-view>
+</div>
+

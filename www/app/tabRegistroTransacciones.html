@@ -1,0 +1,80 @@
+<div data-ng-controller="registroTransaccionesController">
+<ion-view title="Registro De Transacciones"  left-buttons="leftButtons">
+  <ion-tabs class="tabs-icon-top tabs-positive tabs-icon-only tabs-background-dark tabs-color-light">
+    <ion-tab title="Plantilla" icon-off="ion-ios-albums-outline" icon-on="ion-ios-albums" on-select="onTabSelecDet()">
+      <ion-nav-view >
+        <ion-content class="padding" scroll="false">
+          <div class="row">
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Search" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+          <ion-scroll direction="y" class="consultaGeneralScroll">
+            <div data-ng-repeat="codigo in ArrayRegistroTransacciones.slice(0, -1)" data-ng-click="registroSeleccionado(codigo[0],codigo[1],codigo[2],codigo[3])" style="border-bottom:1px solid black;" >
+                      <div class="button-bar" style="margin-top: -6px;">
+                          <div style="margin-right:-1px;">
+                              <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Cod: {{codigo[2]}}</button>
+                          </div>
+                          <button style="text-align:left;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[3]}}</button>
+                          <i class="ion-chevron-right textoEntrada" style="margin: 15px 0px 0px 0px; position: relative;float: right;"></i>
+                      </div>
+                  </div>
+          </ion-scroll>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="Detalle" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper" data-ng-disabled="activarDet">
+      <ion-nav-view>
+        <ion-content>
+    <ion-header-bar class="bar-dark" scroll="false">
+      <h4 class="title">{{nomRegistro}}</h4>
+      <div class="buttons">
+        <button class="button" data-ng-click="grabar()" style="background-color: rgb(000,092,169);">
+            <i class="fa fa-floppy-o" style="font-size: 30px;"></i>
+        </button>
+      </div>
+    </ion-header-bar>
+    </ion-content>
+       <ion-content scroll="false" style="margin: 70px 0px 0px 0px;">
+          <ion-scroll direction="y" style="height:99%;">
+            <div data-ng-repeat="codigos in ArrayListaPlantilla"  style="border-bottom:1px solid black;" data-ng-click="detalleRegistroSeleccionado(codigos,'NO')">
+              <div class="button-bar" style="margin-top: -6px;">
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Cuenta: {{codigos.codCuenta}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigos.nomCuenta}}</button>
+              </div>
+              <div style="margin: -19px 0px 0px 0px;">
+              <div class="button-bar" >
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Tercero: {{codigos.nomCorto}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">
+                    <div ng-if="codigos.debe_haber.indexOf('Crédito') !== -1" class="assertive">{{codigos.valor | currency:"$":0}}</div>
+                    <div ng-if="codigos.debe_haber.indexOf('Débito') !== -1">{{codigos.valor | currency:"$":0}}</div>
+                  </button>
+              </div>
+              </div>
+            </div>
+          </ion-scroll>
+        </ion-content>
+<ion-footer-bar class="bar-dark">
+          <div class="row" style="margin: -10px 0px 0px 10px;">
+            <div class="col col-20" style="margin: 0px 0px 0px 10px;">
+              <button class="button" data-ng-click="detalleRegistroSeleccionado('','SI')" align="left" style="background-color: rgb(219,008,018);">
+                 <i class="fa fa-plus" aria-hidden="true" style="font-size: 20px;"></i>
+              </button>
+            </div>
+            <div class="col col-75" style="text-align: right;"><b class="pull-right">
+                <div ng-if="SumD == 0">Sumas Iguales: {{SumD | currency:"$":0}}</div>
+                <div ng-if="SumD !== 0">Sumas Desiguales: {{SumD | currency:"$":0}}</div>
+            </b></div>
+          </div>
+</ion-footer-bar>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
+</div>

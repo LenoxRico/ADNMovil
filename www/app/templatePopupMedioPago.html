@@ -1,0 +1,13 @@
+<div class="list">
+  <div data-ng-show="selectMedio">
+  <select ng-model="data.index" ng-options="items.indexOf(item) as item.nombre for item in items" ng-change="changedColor()"  class="form-control">
+  </select>
+  </div>
+  <label style="color:white;">Numero:</label>
+  <input type="number" class="form-control" data-ng-model="data.num" data-ng-disabled="numero" ng-class="{ 'bg-red': data.index == 0}">
+  <label style="color:white;">Banco:</label>
+  <input type="text" class="form-control" data-ng-model="data.banco" data-ng-disabled="banco" ng-class="{ 'bg-red': data.index == 0 }">
+  <label style="color:white;">Valor:</label>
+  <input type="number" class="form-control" placeholder=" $" data-ng-model="data.vlr" data-ng-disabled="valor">
+  <label style="color:orange;">{{error}}</label>
+</div>

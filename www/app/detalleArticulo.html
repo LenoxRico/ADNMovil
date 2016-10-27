@@ -1,0 +1,28 @@
+<ion-view view-title="Detalle Artículo" data-ng-controller="detalleArticulo">
+  <ion-content class="padding" scroll="false">
+    <div class="row padding textoEntrada">
+      <div class="col col-40"><b>{{refArticulo}}</b></div>
+      <div class="col col-60"><b>{{nomArticulo}}</b></div>
+    </div>
+    <ion-scroll direction="y" class="detallesScroll">
+      <div data-ng-repeat="detalle in ArrayDetalleInventario.slice(0,-1)"  style="border-bottom:1px solid black;">
+          <div class="button-bar" style="margin-top: -6px;">
+            <!--<div style="margin-right:-1px;">-->
+              <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">{{detalle[0]}}</button>
+              <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small" data-ng-click="existenciasBodega(detalle[0],detalle[1])" ng-if="detalle[0] !== 'Exis.S Por Bode'" >
+                  <div ng-if="detalle[0] !== 'Util Mensual' && detalle[0] !== 'Rotacion Diaria' && detalle[0] !== 'Exis.S Por Bode'">
+                  {{detalle[1]}}</div>
+                  <div ng-if="detalle[0] == 'Util Mensual'">
+                  {{detalle[1]| currency:"$":0}}{{detalle[2]}}</div>
+                  <div ng-if="detalle[0] == 'Rotacion Diaria'">
+                  {{detalle[1]}}{{detalle[2]}} %</div>
+                <!--  <div ng-if="detalle[0] == 'Exis.S Por Bode'" style="text-align: center;">
+                  {{detalle[1]}}{{detalle[2]}}&nbsp<strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong></div>-->
+                </button>
+                <button class="button button-block button-small botonEntrada" data-ng-click="existenciasBodega(detalle[0],detalle[1])" ng-if="detalle[0] == 'Exis.S Por Bode'" style="text-align: center;">
+                  {{detalle[1]}}{{detalle[2]}}&nbsp<strong style="float: right;"><i class="fa fa-angle-double-down" aria-hidden="true" style="font-size: 20px;"></i></strong></button>
+          </div>
+      </div>
+    </ion-scroll>
+  </ion-content>
+</ion-view>

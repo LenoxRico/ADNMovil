@@ -1,0 +1,7 @@
+<ion-list>
+	<ion-item class="item-checkbox" data-ng-repeat="item in periodos">
+	<label class="padding checkbox" >
+	    <input name="seleccion" type="radio" value="{{item.title}}" ng-checked="item.checked" ng-model="my.seleccion" />     
+	</label> {{item.title}}
+	</ion-item>
+</ion-list>

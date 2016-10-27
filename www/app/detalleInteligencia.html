@@ -1,0 +1,19 @@
+<div data-ng-controller="controllerDetalleInteligencia">
+<ion-view title="Detalle Dimensión"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+    <div class="row padding textoEntrada">
+      <div class="col"><b>{{nomDimension}}</b></div>
+    </div>
+<ion-scroll direction="y" class="consultaGeneralScroll">
+  <div data-ng-repeat="codigos in ArrayDetalleDimension.slice(0,-1)"  style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <button style="text-align:left;" class="button button-dark button-block button-small">Mes: {{codigos[0]}}</button>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Variación: {{codigos[2]}}</button>
+            </div>
+                <p style="margin-top: -10px;text-align: right;">{{codigos[1] | currency:"$"}} </p>
+        </div>
+</ion-scroll>
+        </div>
+        </ion-content>
+</ion-view>
+</div>

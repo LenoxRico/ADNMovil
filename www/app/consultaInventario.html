@@ -1,0 +1,37 @@
+<div data-ng-controller="consultaInventarioController">
+<ion-view title="{{title}}">
+  <ion-content class="padding" scroll="false">
+          <div class="row" style="margin: -13px 0px 0px 0px;">
+            <div class="col col-25">
+                <label class="item item-input">
+                  <!--<i class="icon ion-search placeholder-icon"></i>-->
+                  <input type="text" placeholder="Grupo" data-ng-model="textBusquedaGrupo">
+                </label>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Ref/Nom" data-ng-model="textBusquedaArticulo">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="BuscarInventario(textBusquedaGrupo,textBusquedaArticulo)" type="submit">Buscar</button>
+            </div>
+          </div>
+<ion-scroll direction="y" class="consultaGeneralScroll">
+  <div data-ng-repeat="datosInventario in ArrayInventario" data-ng-click="itemSeleccionado(datosInventario[0],datosInventario[1],datosInventario[2],datosInventario[3])" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <button style="text-align:left;" class="button button-dark button-block button-small">Ref: {{datosInventario[1]}}</button>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Cant: {{datosInventario[3]}}</button>
+            </div>
+                <p style="font-size: 12px;margin-top: -10px;">{{datosInventario[2]}}
+                    <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                </p>
+        </div>
+</ion-scroll>
+  </ion-content>
+<ion-footer-bar align-title="right" class="bar-dark">
+  <h1 class="title">Total: {{total | currency}}</h1>
+</ion-footer-bar>
+</ion-view>
+</div>

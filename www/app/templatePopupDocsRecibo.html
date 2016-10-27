@@ -1,0 +1,19 @@
+  <label style="color:white;">Num: {{numDocumento}}</label><br>
+  <label style="color:white;">Saldo: {{saldoDocumento | currency:"$":0}}</label>
+  <br>
+  <label style="color:white;">Afectación:</label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.afect" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Descuento Financiero: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.finan" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Retención Compras: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.comp" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Retención Servicios: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.ser" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Retención Otros: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.otro" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Retención IVA: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.iva" data-ng-focus="focus" data-ng-change="makeTotal()">
+  <label style="color:white;">Retención ICA: </label>
+  <input type="number" style="font-size: 16px;text-align: right;" class="form-control" data-ng-model="dato.ica" data-ng-focus="focus" data-ng-change="makeTotal()">
+
+  <label style="color:white;">Total: {{ltotalAfec | currency:"$":0}}</label>

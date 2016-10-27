@@ -1,0 +1,37 @@
+<div data-ng-controller="controllerConsultaMercadeo">
+<ion-view title="Consulta De Mercadeo Y C.R.M"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+            <div class="col" style="margin: -20px 0px 0px 0px">
+      <ionic-datepicker date="currentDate" min="minDate" max="maxDate" callback="datePickerCallback">
+    <button class="button button-block botonEntrada"><strong style="float: left;"><i class="ion-calendar"></i></strong>Fecha: {{ currentDate | date:'MMMM/dd/yyyy' }}</button>
+      </ionic-datepicker>
+          </div>
+          <div class="row" style="margin: -15px 0px 0px 0px">
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Search" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+
+<ion-scroll direction="y" class="theroot">
+  <div data-ng-repeat="codigo in ArrayMercadeo.slice(0,-1)" data-ng-click="mercadeoSeleccionado(codigo[0],codigo[1],codigo[2],codigo[3],codigo[4])" style="border-bottom:1px solid black;" >
+      <div class="button-bar" style="margin-top: -6px;">
+        <div style="margin-right:-1px;">
+          <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Fecha: {{codigo[2]}}</button>
+        </div>
+        <div style="margin-right:0px;">
+          <button style="left:0px;text-align:left;background-color: #D8D8D8;" class="button button-full button-small">Crit: {{codigo[0]}}</button>
+        </div>
+           <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Pendientes: {{codigo[3]}}</button>
+      </div>
+      <p style="font-size: 12px;margin-top: -10px;">{{codigo[1]}}<strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong></p>
+  </div>
+</ion-scroll>
+        </ion-content>
+</ion-view>
+</div>

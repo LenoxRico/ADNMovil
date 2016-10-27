@@ -1,0 +1,29 @@
+<ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">Bienvenido a ADN Móvil</h1>
+        <button data-ng-controller="botonSalida" class="button button-dark" ng-click="exit()"><div ng-if="isAndroid == true">Salir</div></button>
+      </ion-header-bar>
+      <ion-content  data-ng-controller="validacion">
+      <form name="formulario">
+      <div class="list">
+        <label class="item item-input item-floating-label">
+         <span class="input-label" style="color: rgb(219,008,018);">EMPRESA</span>
+          <input type="text" placeholder="EMPRESA" data-ng-model="empresa" required>
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label" style="color: rgb(219,008,018);">PERSONA</span>
+          <input type="text" placeholder="PERSONA" data-ng-model="usuario" required>
+        </label>  
+        <label class="item item-input item-floating-label">
+          <span class="input-label" style="color: rgb(219,008,018);">CLAVE</span>
+          <input type="password" placeholder="CLAVE" data-ng-model="password" required>
+        </label>
+       <div class="padding">
+          
+          <center><button class="button button-dark" type="submit" on-touch="enviarFormulario(formulario.$valid)" ng-disabled="formulario.$invalid">Entrar</button></center>
+          <center><img src="img/logoNuevoAdn.png" class="marcaAgua"></center>
+        </div>  
+      </div>
+      </form>
+      </ion-content>
+</ion-pane>

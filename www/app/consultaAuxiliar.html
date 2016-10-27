@@ -1,0 +1,34 @@
+<div data-ng-controller="controllerConsultaAuxiliar">
+<ion-view title="Informe Auxiliar Contable"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+    <div class="row padding textoEntrada">
+      <div class="col col-67"><b>{{nomCuenta}}</b></div>
+      <div class="col col-33"><b>{{codCuenta}}</b></div>
+    </div>
+    <ion-scroll direction="y" class="detallesScroll">
+      <div data-ng-repeat="codigos in ArrayAuxContable.slice(0,-1)" data-ng-click="detalleCuenta(codigos[0],codigos[1],codigos[2],codigos[3],codigos[4])"  style="border-bottom:1px solid black;">
+            <div class="button-bar" style="margin-top: -6px;">
+                <div style="margin-right:-1px;">
+                    <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">{{codigos[2]}}</button>
+                </div>
+                <div style="margin-right:0px;">
+                    <button ng-if="codigos[1] !== 'SALDO INICIAL MES'" style="left:0px;text-align:left;background-color: #D8D8D8;" class="button button-full button-small">Doc: {{codigos[0]}}</button>
+                </div>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigos[3] | currency:"$":0}}</button>
+            </div>
+                <p ng-if="codigos[1] !== 'SALDO INICIAL MES'" style="font-size: 12px;margin-top: -10px;">{{codigos[1]}}
+                    <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                </p>
+              <p ng-if="codigos[1] == 'SALDO INICIAL MES'" class="botonEntrada" style="margin-top: -10px; text-align: center; font-weight: bold;">{{codigos[1]}}
+                </p>
+      </div>
+    </ion-scroll>
+        </ion-content>
+</ion-view>
+<ion-footer-bar class="bar-dark">
+          <div class="row">
+            <div class="col col-50" style="margin: 0px 0px 0px 10px;"><b>N° Docs: {{numDocumentos}}</b></div>
+            <div class="col col-50"  style="margin: 0px 0px 0px 0px;text-align: right;"><b class="pull-right">Total: {{valCuenta | currency:"$":0}}</b></div>
+          </div>
+</ion-footer-bar>
+</div>

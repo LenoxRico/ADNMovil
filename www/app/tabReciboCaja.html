@@ -1,0 +1,177 @@
+<div data-ng-controller="ReciboCajaController">
+<ion-view title="Recibo De Caja"  left-buttons="leftButtons">
+  <ion-tabs class="tabs-icon-top tabs-positive tabs-icon-only tabs-background-dark tabs-color-light">
+    <!-- Dashboard Tab -->
+    <ion-tab title="CLIENTES" icon-off="ion-ios-people-outline" icon-on="ion-ios-people">
+      <ion-nav-view >
+        <ion-content class="padding" scroll="false">
+          <div class="row" style="margin: -13px 0px 0px 0px;">
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Nom/Cod Cliente" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+            <ion-scroll direction="y" class="consultaGeneralScroll">
+              <div data-ng-repeat="codigo in ArrayCartera.slice(0, -1)" data-ng-click="itemSeleccionado(codigo[1],codigo[2],codigo[3],codigo[0])" style="border-bottom:1px solid black;" >
+                        <div class="button-bar" style="margin-top: -6px;">
+                            <div style="margin-right:-1px;">
+                                <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Cod: {{codigo[1]}}</button>
+                            </div>
+                            <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[3] | currency:"$":0}}</button>
+                        </div>
+                            <p style="font-size: 12px;margin-top: -10px;">{{codigo[2]}}
+                                <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                            </p>
+                    </div>
+            </ion-scroll>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="PARAMS" icon-off="ion-ios-cog-outline" icon-on="ion-ios-cog" disabled="activoParam" disabled="tabActivo1">
+      <ion-nav-view >
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+          </ion-content>
+          <ion-content class="padding" scroll="false" style="margin: 70px 0px 0px 0px;">
+            <div class="row">
+              <div class="col">
+              <div class="list">
+                    <div class="item item-button-right">
+                      Vendedor: {{usuario}}<button class="button botonSalida" data-ng-click="validar()">Validar</button>
+                    </div> 
+              </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col col-67">
+                  <div class="list">
+                    <div class="item item-button-right" data-ng-repeat="param in paramJson">
+                      {{param.nombre}}: <b class="datos">{{param.datoAsigado}}</b><button class="button botonEntrada"  data-ng-click="popDato(param.id)" data-ng-disabled="modificar"><i class="icon ion-asterisk"></i></button>
+                    </div>                    
+                  </div>
+                </div>
+            </div>
+            
+              <h4 style="color:orange;">{{textError}}</h4><br>
+              <b data-ng-repeat="result in arregloFinalR">
+                <i class="icon ion-arrow-right-b"></i> {{result}}<br>
+              </b>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <!--<ion-tab title="MEDIOS" icon-off="ion-ios-filing-outline" icon-on="ion-ios-filing" disabled="tabActivo2">-->
+    <ion-tab title="MEDIOS" icon-off="ion-ios-cart-outline" icon-on="ion-ios-cart" disabled="tabActivo2">
+      <ion-nav-view>
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+        </ion-content>
+        <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+            <div class="row">
+                <div class="col">
+                    <div class="item item-button-right" >
+                    Agregar Medio De Pago<button class="button botonSalida" on-touch="medio_pago(list.tipo)"> <i class="ion-plus-round"></i></button>
+                    </div>
+                </div>
+            </div>
+<ion-scroll direction="y" class="theroot">
+  <div data-ng-repeat="list in resMedio" on-touch="medio_pago(list.tipo)" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <div style="margin-right:-1px;">
+                    <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Medio: {{list.tipo}}</button>
+                </div>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{list.vlr | currency:"$":0}}</button>
+            </div>
+                <p style="font-size: 12px;margin-top: -10px;">Num: {{list.num}} - Banco: {{list.banco}}
+                    <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                </p>
+        </div>
+        <!--Cra. 13a #37-1, Bogotá -->
+</ion-scroll>
+        </ion-content>     
+<ion-footer-bar align-title="right" class="bar-dark">
+<div data-ng-show="verSiguiente">
+  <b class="title" on-touch="next()">{{totalMedios | currency:"$":0}} <i class="ion-chevron-right"></i></b>  
+</div>
+<!--<b style="float: left;margin: 5px 0px 0px 0px;">{{totalMedios | currency:"$":0}}</b>-->
+</ion-footer-bar>
+      </ion-nav-view>
+    </ion-tab>    
+    <ion-tab title="DOCS" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper" disabled="tabActivo2">
+      <ion-nav-view>
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+        </ion-content> 
+        <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+            <ion-scroll direction="y" class="theroot">
+        <div data-ng-repeat="documentList in ArrayDocumentos" style="border-bottom:1px solid black;" on-touch="itenListDocs(documentList)">
+            <div class="button-bar" style="margin-top: -6px;">
+                <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Num: {{documentList.num}}</button>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Saldo: {{documentList.saldo | currency:"$":0}}</button>
+            </div>
+            <div style="margin: -19px 0px 0px 0px;">
+            <div class="button-bar" >
+                <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Fecha: {{documentList.fecha}}</button>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Ingreso: {{documentList.valor | currency:"$":0}}</button>
+            </div>
+            </div>
+        </div>
+            </ion-scroll>
+        </ion-content>
+<ion-footer-bar class="bar-dark">
+          <div class="row">
+            <div class="col col-50" style="margin: 0px 0px 0px 10px;"><b>Tot MP: {{totalMedios | currency:"$":0}}</b></div>
+            <div class="col col-50 "><b class="pull-right">Tot IN: {{totalIngresos | currency:"$":0}}</b></div>
+          </div>
+</ion-footer-bar>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="TOTALES" icon-off="ion-social-usd-outline" icon-on="ion-social-usd" on-select="onTabSelected()" disabled="tabActivo2">
+      <ion-nav-view>
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>
+       </ion-content>
+       <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Total Medios:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{totalMedios | currency:'$':0}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Total Ingresos:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{totalIngresos | currency:'$':0}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Diferencia:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{diferencia | currency:'$':0}}"></label>
+            </div>
+          </div>
+            <center><button class="button botonEntrada" data-ng-click="grabar()">Grabar</button></center>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
+</div>

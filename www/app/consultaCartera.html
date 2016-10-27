@@ -1,0 +1,35 @@
+<div data-ng-controller="carteracontroller">
+<ion-view title="Consulta De Cartera"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+          <div class="row" style="margin: -13px 0px 0px 0px;">
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Nom/Cod Cliente" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+<ion-scroll direction="y" class="consultaGeneralScroll">
+  <div data-ng-repeat="codigo in ArrayCartera.slice(0, -1)" data-ng-click="itemSeleccionado(codigo[1],codigo[2],codigo[3],codigo[0])" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <div style="margin-right:-1px;">
+                    <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Cod: {{codigo[1]}}</button>
+                </div>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[3] | currency:"$":0}}</button>
+            </div>
+                <p style="font-size: 12px;margin-top: -10px;">{{codigo[2]}}
+                    <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                </p>
+        </div>
+</ion-scroll>
+        </ion-content>
+</ion-view>
+
+<ion-footer-bar align-title="right" class="bar-dark">
+
+  <h1 class="title">Total: {{sum | currency:"$":0}}</h1>
+</ion-footer-bar>
+</div>

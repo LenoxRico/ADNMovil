@@ -1,0 +1,37 @@
+<div data-ng-controller="controllerDetalleMovimientos">
+<ion-view title="{{nomCuenta}}"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+  <div class="item item-input-inset">
+            <div class="col col-50">
+                <button class="button botonSalida button-small button-block" data-ng-click="listDocumentos()">{{nomCuenta}} <i class="ion-arrow-down-b"></i></button>  
+            </div>
+            <div class="col col-50">
+                <button class="button botonEntrada button-small button-block" data-ng-click="popFecha(textBusqueda)">{{selected}} <i class="ion-arrow-down-b"></i></button>           
+            </div>
+  </div>
+<ion-scroll direction="y" class="theroot">
+  <div data-ng-repeat="codigos in ArrayDetalleTransacciones.slice(0, -1)" data-ng-click="detalleMovimiento(codigos[0],codigos[1],codigos[2],codigos[3],codigos[4])" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <div style="margin-right:-1px;">
+                    <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Num: {{codigos[0]}}</button>
+                </div>
+                <div style="margin-right:0px;">
+                    <button style="left:0px;text-align:left;background-color: #D8D8D8;" class="button button-full button-small">Dia: {{codigos[1]}}</button>
+                </div>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigos[3] | currency:"$":0}}</button>
+            </div>
+                <p style="font-size: 12px;margin-top: -10px;">{{codigos[2]}}
+                    <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                </p>
+        </div>
+</ion-scroll>
+  
+        </ion-content>
+<ion-footer-bar class="bar-dark">
+          <div class="row">
+            <div class="col col-50" style="margin: 0px 0px 0px 10px;"><p>N° Docs: {{numDocumentos}}</p></div>
+            <div class="col col-50" style="margin: 0px 0px 0px 0px;text-align: right;"><p>Total: {{val | currency:"$":0}}</p></div>
+          </div>
+</ion-footer-bar>
+</ion-view>
+</div>

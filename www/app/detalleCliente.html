@@ -1,0 +1,15 @@
+<div data-ng-controller="controllerDetalleCliente">
+<ion-view title="{{nomCliente}}"  left-buttons="leftButtons">
+        <ion-content class="padding">
+        <ion-scroll direction="y" class="detallesScroll">
+     <div data-ng-repeat="codigos in ArrayDetalleCliente.slice(0, -1)" style="border-bottom:1px solid black;" >
+            <div class="button-bar" style="margin-top: -6px;">
+                <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">{{codigos[0]}} :</button>
+                <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigos[1]}}
+                </button>
+            </div>
+        </div>
+    </ion-scroll>
+        </ion-content>
+</ion-view>
+</div>

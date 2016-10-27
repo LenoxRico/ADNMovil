@@ -1,0 +1,28 @@
+<div data-ng-controller="controllerInteligencia">
+<ion-view title="Inteligencia De Negocios"  left-buttons="leftButtons">
+        <ion-content class="padding" scroll="false">
+          <div class="row" style="margin: 0px 0px 0px 0px" >
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Nombre/Código" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+    <ion-scroll direction="y" class="consultaGeneralScroll">
+      <div data-ng-repeat="codigo in ArrayDimension.slice(0,-1)" data-ng-click="dimensionSeleccionado(codigo[0],codigo[1],codigo[2],codigo[3],codigo[4])" style="border-bottom:1px solid black;" >
+                <div class="button-bar" style="margin-top: -6px;">
+                    <button style="text-align:left;" class="button button-dark button-block button-small">Cod: {{codigo[2]}}</button>
+                    <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[4] | currency:"$":0}}</button>
+                </div>
+                    <p style="margin-top: -10px;">{{codigo[3] }}
+                        <strong style="float: right;"><i class="ion-chevron-right textoEntrada"></i></strong>
+                    </p>
+            </div>
+    </ion-scroll>
+        </ion-content>
+</ion-view>
+</div>

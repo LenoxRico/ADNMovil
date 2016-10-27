@@ -1,0 +1,29 @@
+<div data-ng-controller="controllerAgregarTarea">
+<ion-view title="Nueva Tarea"  left-buttons="leftButtons">
+  <ion-content class="padding" scroll="false">
+    <div class="row" style="margin:-15px 0px 0px 0px;">
+      <div class="col col-60">
+       <ionic-datepicker date="currentDate" min="minDate" max="maxDate" callback="datePicker">
+         <button class="button button-block botonEntrada" style="line-height: 20px;"><strong style="float: left;"><i class="ion-calendar"></i></strong>Fecha: {{ currentDate | date:'MMMM/dd/yyyy' }} </button>
+      </ionic-datepicker> </div>
+      <div class="col col-40">
+       <ionic-timepicker callback="callback">
+         <button class="button button-block botonEntrada" ng-click="selectTime()" style="line-height: 20px;">Hora: {{showHora}}</button>
+       </ionic-timepicker>
+      </div>
+    </div>
+    <form name="addTarea">
+    <div class="col">
+        <textarea class="nuevaTarea" placeholder=" Agregar descripción: " name="agregarTarea" rows="18" cols="10" data-ng-model="textBusqueda" required></textarea>
+    </div>
+    <br>
+    <div>
+      <button class="col-xs-4 button botonEntrada" data-ng-click="cancelarTarea()" type="submit" align="left">Cancelar</button>
+    <div class="col-xs-4"></div>
+      <button class="button botonSalida col-xs-4" data-ng-click="Grabar(textBusqueda,addTarea.$valid)" type="submit" ng-disabled="addTarea.$invalid" align="right"> Grabar </button>
+    </div>   
+    </form>
+
+        </ion-content>
+</ion-view>
+</div>

@@ -1,0 +1,164 @@
+<div data-ng-controller="FacRemPeController">
+<ion-view title="{{nombreSeleccionado}}"  left-buttons="leftButtons">
+  <ion-tabs class="tabs-icon-top tabs-positive tabs-icon-only tabs-background-dark tabs-color-light">
+    <!-- Dashboard Tab -->
+    <ion-tab title="CLIENTES" icon-off="ion-ios-people-outline" icon-on="ion-ios-people">
+      <ion-nav-view >
+        <ion-content class="padding" scroll="false">
+          <div class="row" style="margin: 0px 0px 0px 0px">
+            <div class="col col-75">
+                <label class="item item-input">
+                  <i class="icon ion-search placeholder-icon"></i>
+                  <input type="text" placeholder="Search" data-ng-model="textBusqueda">
+                </label>
+            </div>
+            <div class="col">
+                  <button class="button botonEntrada" data-ng-click="Buscar(textBusqueda)" type="submit">Buscar</button>
+            </div>
+          </div>
+          <ion-scroll direction="y" class="consultaGeneralScroll">
+            <div data-ng-repeat="codigo in ArrayFacturaCliente.slice(0,-1)" data-ng-click="itemSeleccionado(codigo[0],codigo[1],codigo[2])" style="border-bottom:1px solid black;" >
+                      <div class="button-bar" style="margin-top: -6px;">
+                          <div style="margin-right:-1px;">
+                              <button style="left:-1px;text-align:left;" class="button button-dark button-full button-small">Cod: {{codigo[0]}}</button>
+                          </div>
+                          <button style="text-align:left;background-color: #E6E6E6;" class="button button-block button-small">{{codigo[1]}}</button>
+                          <i class="ion-chevron-right textoEntrada" style="margin: 15px 0px 0px 0px; position: relative;float: right; font-size: 20px;"></i>
+                      </div>
+                  </div>
+          </ion-scroll>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="PARAMS" icon-off="ion-ios-cog-outline" icon-on="ion-ios-cog" disabled="activoParam">
+      <ion-nav-view >
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+          </ion-content>
+       <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+            <div class="row">
+              <div class="col">
+              <div class="list">
+                    <div class="item item-button-right">
+                      Vendedor: {{usuario}}<button class="button botonSalida" data-ng-click="validar()">Validar</button>
+                    </div> 
+              </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col col-67">
+                  <div class="list">
+                    <div class="item item-button-right" data-ng-repeat="param in paramJson">
+                      {{param.nombre}}: <b class="datos">{{param.datoAsigado}}</b><button class="button botonEntrada" data-ng-click="popDato(param.id)" data-ng-disabled="modificar"><i class="icon ion-asterisk"></i></button>
+                    </div>                    
+                  </div>
+                </div>
+            </div>
+            
+              <h4 style="color:orange;">{{textError}}</h4><br>
+              <b data-ng-repeat="result in arregloFinal">
+                <i class="icon ion-arrow-right-b"></i> {{result}}<br>
+              </b>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+    <ion-tab title="ITEMS" icon-off="ion-ios-list-outline" icon-on="ion-ios-list"  disabled="activo">
+      <ion-nav-view>
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+        </ion-content> 
+        <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+         <div class="row">
+              <div class="col col-75 col-offset-25">
+                    <div class="item item-button-right" style="text-align: right;">
+                      Agregar Articulo<button class="button botonSalida" data-ng-click="articulo()"><i class="ion-plus-round"></i></button>
+                    </div> 
+              </div>
+            </div>
+          <ion-scroll direction="y" class="theroot">
+            <div style="border-bottom:1px solid black;" data-ng-repeat="list in listaItemsFacturas" data-ng-click="itemFactura(list.referencia)" >
+              <div class="button-bar" style="margin-top: -6px;">
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Ref: {{list.referencia}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Cant: {{list.cantidad}}</button>
+              </div>
+              <div style="margin: -19px 0px 0px 0px;">
+              <div class="button-bar" >
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">{{list.nombre}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">{{list.sTotal | currency:"$":0}}</button>
+              </div>
+              </div>
+            </div>
+          </ion-scroll>
+        </ion-content>
+        <ion-footer-bar align-title="right" class="bar-dark">
+          <h1 class="title">Total: {{sum | currency:undefined:0}}</h1>
+        </ion-footer-bar>
+      </ion-nav-view>
+    </ion-tab>    
+    <ion-tab title="TOTALES" icon-off="ion-social-usd-outline" icon-on="ion-social-usd" disabled="activo" on-select="factTotal()">
+      <ion-nav-view>
+        <ion-content>
+          <div class="bar bar-header bar-dark" style="width:100%;height: auto;">
+            <h4 style="color:white" >{{nomCliente}}</h4>
+          </div>  
+        </ion-content> 
+        <ion-content class="padding" scroll="false" style="margin: 50px 0px 0px 0px;">
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Servicios:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{tServicios | currency}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Mercancia:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{tMercancia | currency}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>IVA:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{tIva | currency}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Descuento: (%)</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{tDescuento | currency}}"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Rete Fuente:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true"></label>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col col-50" >
+                  <span class="input-label-Fact textoEntrada"><b>Cta Por Cobrar:</b></span>
+            </div>
+            <div class="col col-50">
+                <label class="item item-input"><input disabled="true" value="{{tCtaCobrar | currency}}"></label>
+            </div>
+          </div>
+            <center><button class="button botonEntrada" data-ng-click="grabar()">Grabar</button></center>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+</ion-view>
+</div>

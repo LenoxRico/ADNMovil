@@ -1,0 +1,26 @@
+ <ion-modal-view>
+        <ion-header-bar class="bar bar-dark" >
+          <h1 class="title">Existencia Por Bodega</h1>
+          <button class="button" style="background-color: rgb(000,092,169); color: white;" ng-click="modal.hide()">Cerrar&nbsp&nbsp<i class="ion-close-circled"></i></button>
+        </ion-header-bar>
+        <ion-content class="padding" scroll="false">
+    <div class="row padding textoEntrada">
+      <div class="col col-40"><b>{{refArticulo}}</b></div>
+      <div class="col col-60"><b>{{nomArticulo}}</b></div>
+    </div>
+          <ion-scroll direction="y" class="detallesScroll">
+            <div data-ng-repeat="codigos in ArrayExistenciaBodega.slice(0,-1)"  style="border-bottom:1px solid black;" data-ng-click="detalleRegistroSeleccionado(codigos,'NO')">
+              <div class="button-bar" style="margin-top: -6px;">
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Código: {{codigos[0]}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Cantidad: {{codigos[1]}}</button>
+              </div>
+              <div style="margin: -19px 0px 0px 0px;">
+              <div class="button-bar" >
+                  <button style="left:-1px;text-align:left;" class="button button-dark button-block button-small">Nombre: {{codigos[2]}}</button>
+                  <button style="text-align:right;background-color: #E6E6E6;" class="button button-block button-small">Valor: {{codigos[3]}} </button>
+              </div>
+              </div>
+            </div>
+          </ion-scroll>
+        </ion-content>
+      </ion-modal-view>

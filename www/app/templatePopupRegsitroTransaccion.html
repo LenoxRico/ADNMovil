@@ -1,0 +1,54 @@
+   <div class="col">
+       <label class="item item-input">
+         <input type="text" placeholder="Descripción" data-ng-model="dato.nomPlantilla" data-ng-change="valores()">
+       </label>
+   </div>
+
+<div class="padding">
+   <div class="row">
+   <div class="col col-33" style="text-align: right; color: #ffffff;">Cuenta:</div>
+   <div class="col col-80">
+       <label class="item item-input">
+         <i class="icon ion-edit placeholder-icon"></i>
+         <input type="text" data-ng-model="dato.cuenta" data-ng-change="valores()">
+       </label>
+   </div>
+   </div>
+
+   <div class="row">
+   <div class="col col-33" style="text-align: right; color: #ffffff;">Ccos:</div>
+   <div class="col col-80">
+       <label class="item item-input">
+         <i class="icon ion-edit placeholder-icon"></i>
+         <input type="text" data-ng-model="dato.cco" data-ng-change="valores()">
+       </label>
+   </div>
+   </div>
+
+   <div class="row">
+   <div class="col col-33" style="text-align: right; color: #ffffff;">Nit:</div>
+   <div class="col col-80">
+       <label class="item item-input">
+         <i class="icon ion-edit placeholder-icon"></i>
+         <input type="text" data-ng-model="dato.nit" data-ng-change="valores()">
+       </label>
+   </div>
+   </div>
+
+   <div class="row">
+   <div class="col col-33" style="text-align: right; color: #ffffff;">Valor:</div>
+   <div class="col col-80">
+       <label class="item item-input">
+         <i class="icon ion-edit placeholder-icon"></i>
+         <input type="text" data-ng-model="dato.valor" data-ng-change="valores()">
+       </label>
+   </div>
+   </div>
+ </div>
+
+ <div class="row" style="margin: 0px 0px 0px 0px">
+  <ion-checkbox class="col col-50" style="text-align: right;background-color: transparent;border: transparent;color: white" ng-model="dato.Debito" ng-checked="dato.Debito" ng-change="debi_credi('Debito')">Débito</ion-checkbox>
+  <ion-checkbox class="col col-50" style="text-align: right;background-color: transparent;border: transparent;color: white" ng-model="dato.Credito" ng-checked="dato.Credito" ng-change="debi_credi('Credito')">Crédito</ion-checkbox>
+ </div>
+
+ <label style="color: orange">{{error}}</label>

@@ -1,0 +1,15 @@
+		<label style="color:white;">Referencia: {{refArticulo}}</label><br>
+		<label style="color:white;">Nombre: {{nomArticulo}}</label><br>
+		<label style="color:white;">Existencia: {{exisArticulo}}</label><br>
+		<label style="color:white;">Valor/u:</label>
+		<input type="number" class="form-control"  placeholder="0" data-ng-model="data.vlr">
+		<label style="color:white;">Cantidad:</label>
+		<input type="number" class="form-control" data-ng-model="data.cant">
+		<label style="color:white;">Descuento (%):</label>
+		<input type="number" class="form-control" data-ng-model="data.desc">
+		<label style="color:orange;">{{error}}</label><br>
+		<hr>
+		<label style="color:white;">Subtotal: {{data.vlr * data.cant * (100-data.desc)/100 | currency:undefined:0}}</label>
+		
+
+<!--var total:Number = Number(valoru)*cantidad*(100-descuento)/100;-->
